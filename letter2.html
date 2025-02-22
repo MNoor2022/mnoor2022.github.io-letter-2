@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Letter 2</title>
+    <style>
+        body {
+            background: #1a0033;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', monospace;
+            overflow: hidden;
+        }
+
+        .scene {
+            position: relative;
+            width: 400px;
+            height: 300px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(147, 112, 219, 0.3);
+            opacity: 0.5;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #e6e6fa;
+            animation: twinkle 1.5s infinite;
+            box-shadow: 0 0 2px #e6e6fa; /*added glow*/
+        }
+        
+        .raindrop {
+            position: absolute;
+            width: 2px;
+            height: 10px;
+            background: #e6e6fa;
+            animation: rain 1s infinite linear;
+            opacity: 0.6; /*made rain slightly transparent*/
+        }
+
+        @keyframes flow {
+            0% { background-position: 0 0; }
+            100% { background-position: 20px 0; }
+        }
+
+        @keyframes rain {
+            0% { transform: translateY(-100vh); }
+            100% { transform: translateY(100vh); }
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 1; transform: scale(1.1); }
+            50% { opacity: 0.3; transform: scale(0.9); }
+        }
+
+        .message {
+            color: #e6e6fa;
+            text-align: center;
+            max-width: 400px;
+            line-height: 1.6;
+            opacity: 0;
+            animation: fadeIn 3s forwards;
+            padding: 20px;
+            border: 2px solid #9370db;
+            border-radius: 10px;
+            background: rgba(75, 0, 130, 0.2);
+            font-size: 12px;
+            margin: 10px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="scene">
+        <div class="tree"></div>
+        <div class="tree"></div>
+        <div class="river"></div>
+        <div class="flower" style="left: 50px;"></div>
+        <div class="flower" style="left: 120px;"></div>
+        <div class="flower" style="left: 280px;"></div>
+        <div class="flower" style="left: 350px;"></div>
+    </div>
+    <div class="message">
+        In ancient times, the color purple was of luxury<br>
+        coming from the Murex Snail located in every<br>
+        tropical sea from Africa, Asia, and the Americas.<br>
+        Such a dye is created with intensity and patience.<br>
+        It takes over 12,000 snails to make 1 gram of Tyrian Purple dye.<br>
+        Hence why the color represents honor, royalty, and expression of dedication to one's craft.<br><br>
+
+        In human anatomy, the color appears when one is bruised<br>
+        after sustaining an injury due to a damaged blood vessel<br>
+        with fresh red blood mixing with oxygen-depleted blue<br>
+        due to hemoglobin breaking down into biliverdin and showing itself as such.<br>
+        Sharing in its passion from fashion, purple appears when the body is healing itself through turomoil and fortitude.<br>
+        To witness its transformation is of beauty and worth marveling.<br><br>
+
+        The mixture of red and blue also represents a connection between physical energy and calm of mind.<br>
+        It's presentation represents a body of strength and mental peace.<br>
+        Witnessing this in its full glory shows itself in a beautiful life sweet as lavender dreams and vibrant as violet rays.<br>
+        For someone to love such a color is one who is filled with harmony, compassion, and tranquility.<br>
+        To have my world painted in such a color is a masterpiece worthy of never putting it down and to be cherished forever.<br>
+    </div>
+
+    <script>
+        function createRaindrops() {
+            const scene = document.querySelector('.scene');
+            for (let i = 0; i < 50; i++) {
+                const raindrop = document.createElement('div');
+                raindrop.className = 'raindrop';
+                raindrop.style.left = Math.random() * 100 + '%';
+                raindrop.style.animationDelay = Math.random() * 1 + 's';
+                scene.appendChild(raindrop);
+            }
+        }
+
+        function createStars() {
+            const scene = document.querySelector('.scene');
+            for (let i = 0; i < 30; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 60 + '%';
+                star.style.animationDelay = Math.random() * 1.5 + 's';
+                scene.appendChild(star);
+            }
+        }
+
+        // Create both raindrops and stars when the page loads
+        createRaindrops();
+        createStars();
+    </script>
+</body>
+</html>
